@@ -1,0 +1,32 @@
+{
+  "name": "map-slicer",
+  "version": "1.0.0",
+  "description": "Map slicer / Tools / GeoJson",
+  "main": "./src/main.js",
+  "scripts": {
+    "start": "node ./src/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrManYoYo/Map-Slicer.git"
+  },
+  "keywords": [
+    "Map",
+    "slicer",
+    "/",
+    "Tools",
+    "/",
+    "GeoJson"
+  ],
+  "author": "MrManYoYo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MrManYoYo/Map-Slicer/issues"
+  },
+  "homepage": "https://github.com/MrManYoYo/Map-Slicer#readme",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.3"
+  }
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Map slicer</title>
+  <link rel="stylesheet" type="text/css" href="./static/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="./static/css/index.css">
+</head>
+<body>
+  <div id="app"></div>
+  <script src="https://api.map.baidu.com/api?v=3.0&ak=TNTeZWP0X7UDnCmrOnu48Fy5cur8puxe"></script>
+  <script>
+    const map = new BMap.Map('app', {
+      enableMapClick: false,
+    }),
+      point = new BMap.Point(120.138023, 30.279619),
+      mapStyle = [
+        {
+          "featureType": "highway",
+          "elementType": "all",
+          "stylers": {
+            "visibility": "off",
+          }
+        },
+        {
+          "featureType": "subway",
+          "elementType": "all",
+          "stylers": {
+            "lightness": -65,
+            "visibility": "off"
+          }
+        },
+        {
+          "featureType": "railway",
+          "elementType": "all",
+          "stylers": {
+            "lightness": -40,
+            "visibility": "off",
+          }
+        },
+        
+      ]
+    map.setMapStyle({
+      styleJson: mapStyle
+    })
+    map.centerAndZoom(point, 12)
+    map.enableScrollWheelZoom()
+  </script>
+</body>
+</html>

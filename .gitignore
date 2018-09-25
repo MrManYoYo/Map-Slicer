@@ -1,0 +1,12 @@
+.git
+.DS_Store
+node_modules/
+npm-debug.log*
+package-lock.json
+yarn-error.log
+yarn.lock
+.vs-code/
+.project
+.swp
+.idea/
+dist/
