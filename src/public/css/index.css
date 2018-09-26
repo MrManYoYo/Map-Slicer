@@ -5,3 +5,21 @@
 .BMap_cpyCtrl.BMap_noprint, .anchorBL{
   display: none;
 }
+
+.BMapLib_box:not(.BMapLib_polygon):not(.BMapLib_polygon_hover){
+  display: none;
+}
+/* 扩展自定义工具 */
+.clear-btn{
+  width: auto;
+  height: 47px;
+  line-height: 47px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  border: 1px solid #666;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  cursor: pointer;
+  user-select: none;
+}
