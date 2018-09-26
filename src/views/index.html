@@ -15,6 +15,7 @@
   <div id="app"></div>
   <script src="https://api.map.baidu.com/api?v=3.0&ak=TNTeZWP0X7UDnCmrOnu48Fy5cur8puxe"></script>
   <script src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+  <script src="./static/js/mvc.js"></script>
   <script>
     (function () {
       const map = new BMap.Map('app', {
@@ -86,7 +87,7 @@
       });
 
       class selfCtrl extends BMap.Control {
-        constructor () {
+        constructor() {
           super()
           this.defaultAnchor = BMAP_ANCHOR_TOP_LEFT;
           this.defaultOffset = new BMap.Size(10, 10);
@@ -108,7 +109,10 @@
       // 添加到地图当中
       map.addControl(mySelfCtrl);
 
+      const arr = subscribeArray()
       
+      arr.push(1)
+
     })()
 
   </script>
