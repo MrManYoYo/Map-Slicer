@@ -9,12 +9,19 @@
   <link rel="stylesheet" href="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.css" />
   <link rel="stylesheet" type="text/css" href="./static/css/reset.css">
   <link rel="stylesheet" type="text/css" href="./static/css/index.css">
+  <link rel="stylesheet" type="text/css" href="./static/css/codemirror.css">
+  <link rel="stylesheet" type="text/css" href="./static/css/monokai.css">
 </head>
 
 <body>
   <div id="app"></div>
+  <div class="popover">
+    <div class="codemirror" id="codeMirror"></div>
+  </div>
   <script src="https://api.map.baidu.com/api?v=3.0&ak=TNTeZWP0X7UDnCmrOnu48Fy5cur8puxe"></script>
   <script src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+  <script src="./static/js/codemirror.js"></script>
+  <script src="./static/js/javascript.js"></script>
   <script src="./static/js/mvc.js"></script>
   <script>
     (function () {
@@ -109,9 +116,14 @@
       // 添加到地图当中
       map.addControl(mySelfCtrl);
 
-      const arr = subscribeArray()
-      
-      arr.push(1)
+      const jsCodeMirror = CodeMirror(document.getElementById('codeMirror'), {
+        value: '// point data',
+        mode: 'javascript',
+        lineNumbers: true,
+        tabSize: 2,
+        theme: 'monokai'
+      })
+
 
     })()
 

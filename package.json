@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/MrManYoYo/Map-Slicer#readme",
   "dependencies": {
+    "codemirror": "^5.40.2",
     "ejs": "^2.6.1",
     "express": "^4.16.3"
   },
