@@ -93,6 +93,7 @@
     map.clearOverlays()
   })
   jsonBtn.addEventListener('click', () => {
+    console.log(overlays)
     if (jsonBtn.className.indexOf('active') !== -1) {
       jsonBtn.className = jsonBtn.className.replace(' active', '')
       toggleClass(popover, 'hide')
@@ -100,15 +101,16 @@
       jsonBtn.className += ' active'
       // 格式化value
       if (overlays.length !== 0) {
-        overlays.forEach((item, index) => {
+        const formatArr = Array.from(overlays)
+        formatArr.forEach((item, index) => {
           let str = JSON.stringify(item).replace(/},/ig, '},\n')
           str = str.replace(/\[/ig, '[\n')
           str = str.replace(/{/ig, '\t{')
           str = str.replace(/}]|},]/ig, '}\n]')
           console.log(str)
-          overlays[index] = str
+          formatArr[index] = str
         })
-        jsCodeMirror.setValue(overlays[overlays.length - 1])
+        jsCodeMirror.setValue(formatArr[formatArr.length - 1])
       }
       toggleClass(popover, 'hide')
     }
