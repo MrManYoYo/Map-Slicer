@@ -10,6 +10,7 @@
   display: none;
 }
 .popover{
+  display: none;
   width: 300px;
   height: 300px;
   position: fixed;
@@ -51,11 +52,13 @@
   color: lightgreen;
 }
 /* 扩展自定义工具 */
-.clear-btn{
+.self-control{
   width: auto;
   height: 47px;
   line-height: 47px;
-  padding: 0 10px;
+  position: fixed;
+  left: 5px;
+  top: 5px;
   box-sizing: border-box;
   border: 1px solid #666;
   border-radius: 5px;
@@ -64,4 +67,39 @@
   cursor: pointer;
   user-select: none;
   background-color: #fff;
+}
+.clear-btn, .json-btn{
+  display: inline-block;
+  width: 56px;
+  height: 47px;
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+.clear-btn{
+  background-image: url(../img/icon-clear.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30px 30px;
+  background-color: #fff;
+}
+.clear-btn:active{
+  background-image: url(../img/icon-clear-active.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30px 30px;
+  background-color: #0078b7;
+}
+.json-btn{
+  background-image: url(../img/icon-json.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30px 30px;
+  background-color: #fff;
+}
+.json-btn.active{
+  background-image: url(../img/icon-json-active.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 30px 30px;
+  background-color: #0078b7;
 }

@@ -77,6 +77,24 @@
     }
   });
 
+  // 自定义工具框事件
+  const ctrlCont = document.querySelector('.self-control'),
+    clearBtn = document.querySelector('.clear-btn'),
+    jsonBtn = document.querySelector('.json-btn')
+
+  clearBtn.addEventListener('click', () => {
+    map.clearOverlays()
+  })
+  jsonBtn.addEventListener('click', () => {
+    if (jsonBtn.className.indexOf('active') !== -1) {
+      jsonBtn.className = jsonBtn.className.replace(' active', '')
+      popover.style.display = 'none'
+    } else {
+      jsonBtn.className += ' active'
+      popover.style.display = 'block'
+    }
+  })
+
   class selfCtrl extends BMap.Control {
     constructor() {
       super()
@@ -84,25 +102,19 @@
       this.defaultOffset = new BMap.Size(10, 10);
     }
     initialize(map) {
-      const div = document.createElement('div')
-      div.appendChild(document.createTextNode('清除'))
-      div.className = 'clear-btn'
-      div.onclick = (e) => {
-        map.clearOverlays()
-        // console.log(overlays)
-      }
-      map.getContainer().appendChild(div);
-      return div;
+      // map.getContainer().appendChild(div);
+      return ctrlCont;
     }
   }
   // 创建控件
-  const mySelfCtrl = new selfCtrl();
+  // const mySelfCtrl = new selfCtrl();
   // 添加到地图当中
-  map.addControl(mySelfCtrl);
+  // map.addControl(mySelfCtrl);
 
   // 弹窗确定按钮事件
   confirmBtn.addEventListener('click', () => {
     popover.style.display = 'none'
   })
+
 
 })()
