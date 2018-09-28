@@ -10,13 +10,15 @@
   display: none;
 }
 .popover{
-  display: none;
-  width: 300px;
+  width: 350px;
   height: 300px;
   position: fixed;
   top: calc( 50% - 150px );
   left: calc( 50% - 150px );
   background-color: #fff;
+}
+.popover.hide{
+  visibility: hidden;
 }
 .popover .popover-title{
   background-color: #272821;

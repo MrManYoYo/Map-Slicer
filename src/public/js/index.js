@@ -71,11 +71,18 @@
     const { drawingMode, overlay } = e
     if (drawingMode === BMAP_DRAWING_POLYGON) {
       overlay.enableEditing()
-      overlays.push(overlay)
+      overlays.push(overlay.getPath())
       jsCodeMirror.setValue(JSON.stringify(overlay.getPath()))
-      subscribeArray()
     }
   });
+
+  function toggleClass(dom, cls) {
+    if (dom.className.indexOf(cls) !== -1) {
+      dom.className = dom.className.replace(` ${cls}`, '')
+    } else {
+      dom.className += ` ${cls}`
+    }
+  }
 
   // 自定义工具框事件
   const ctrlCont = document.querySelector('.self-control'),
@@ -88,10 +95,22 @@
   jsonBtn.addEventListener('click', () => {
     if (jsonBtn.className.indexOf('active') !== -1) {
       jsonBtn.className = jsonBtn.className.replace(' active', '')
-      popover.style.display = 'none'
+      toggleClass(popover, 'hide')
     } else {
       jsonBtn.className += ' active'
-      popover.style.display = 'block'
+      // 格式化value
+      if (overlays.length !== 0) {
+        overlays.forEach((item, index) => {
+          let str = JSON.stringify(item).replace(/},/ig, '},\n')
+          str = str.replace(/\[/ig, '[\n')
+          str = str.replace(/{/ig, '\t{')
+          str = str.replace(/}]|},]/ig, '}\n]')
+          console.log(str)
+          overlays[index] = str
+        })
+        jsCodeMirror.setValue(overlays[overlays.length - 1])
+      }
+      toggleClass(popover, 'hide')
     }
   })
 
@@ -113,7 +132,7 @@
 
   // 弹窗确定按钮事件
   confirmBtn.addEventListener('click', () => {
-    popover.style.display = 'none'
+    jsonBtn.click()
   })
 
 
