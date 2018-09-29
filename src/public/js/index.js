@@ -102,6 +102,7 @@
       // 格式化value
       if (overlays.length !== 0) {
         const formatArr = Array.from(overlays)
+        let allStr = ''
         formatArr.forEach((item, index) => {
           let str = JSON.stringify(item.getPath()).replace(/},/ig, '},\n')
           str = str.replace(/\[/ig, '[\n')
@@ -109,8 +110,10 @@
           str = str.replace(/}]|},]/ig, '}\n]')
           console.log(str)
           formatArr[index] = str
+          allStr += index ? '\n' + str : str
         })
-        jsCodeMirror.setValue(formatArr[formatArr.length - 1])
+        // jsCodeMirror.setValue(formatArr[formatArr.length - 1])
+        jsCodeMirror.setValue(allStr)
       }
       toggleClass(popover, 'hide')
     }
