@@ -71,7 +71,7 @@
     const { drawingMode, overlay } = e
     if (drawingMode === BMAP_DRAWING_POLYGON) {
       overlay.enableEditing()
-      overlays.push(overlay.getPath())
+      overlays.push(overlay)
       jsCodeMirror.setValue(JSON.stringify(overlay.getPath()))
     }
   });
@@ -103,7 +103,7 @@
       if (overlays.length !== 0) {
         const formatArr = Array.from(overlays)
         formatArr.forEach((item, index) => {
-          let str = JSON.stringify(item).replace(/},/ig, '},\n')
+          let str = JSON.stringify(item.getPath()).replace(/},/ig, '},\n')
           str = str.replace(/\[/ig, '[\n')
           str = str.replace(/{/ig, '\t{')
           str = str.replace(/}]|},]/ig, '}\n]')
