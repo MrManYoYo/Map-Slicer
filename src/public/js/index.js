@@ -65,6 +65,7 @@
       rectangleOptions: styleOptions //矩形的样式
     }),
     overlays = [];
+    let total = 0;
 
   //添加鼠标绘制工具监听事件，用于获取绘制结果
   drawingManager.addEventListener('overlaycomplete', (e) => {
@@ -73,6 +74,8 @@
       overlay.enableEditing()
       overlays.push(overlay)
       jsCodeMirror.setValue(JSON.stringify(overlay.getPath()))
+      total++
+      createList(total)
     }
   });
 
@@ -81,6 +84,31 @@
       dom.className = dom.className.replace(` ${cls}`, '')
     } else {
       dom.className += ` ${cls}`
+    }
+  }
+
+  // 创建列表
+  const createList = (parentDom, index) => {
+    const _div = document.createElement('div'),
+      _label = document.createElement('label'),
+      _input = document.createElement('input'),
+      _index = index || parentDom,
+      _text = document.createTextNode(`polygon ${_index}`)
+
+    _div.classList.add('polygon-item')
+    _label.setAttribute('for', `polygon${_index}`)
+    _input.setAttribute('type', 'checkbox')
+    _input.setAttribute('name', 'polygon')
+    _input.setAttribute('id', `polygon${_index}`)
+    _input.classList.add('polygon-checkbox')
+    _label.appendChild(_input)
+    _label.appendChild(_text)
+    _div.appendChild(_label)
+    if (typeof parentDom !== 'number' && parentDom) {
+      parentDom.appendChild(_div)
+    } else {
+      const _parent = document.querySelector('.polygon-list')
+      _parent.appendChild(_div)
     }
   }
 

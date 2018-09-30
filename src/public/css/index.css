@@ -9,6 +9,32 @@
 .BMapLib_box:not(.BMapLib_polygon):not(.BMapLib_polygon_hover){
   display: none;
 }
+
+/* polygon list */
+.polygon-list{
+  position: fixed;
+  right: 5px;
+  bottom: 5px;
+  width: 140px;
+  padding: 10px 10px 10px 20px;
+  box-sizing: border-box;
+  max-height: 50vh;
+  background-color: rgba(0, 0, 0, .5);
+  color: #fff;
+}
+.polygon-list .polygon-item{
+  height: 20px;
+  line-height: 20px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+}
+.polygon-list .polygon-item .polygon-checkbox{
+  margin-right: 5px;
+  vertical-align: middle;
+}
 .popover{
   width: 350px;
   height: 300px;
