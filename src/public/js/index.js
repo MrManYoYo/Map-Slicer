@@ -100,7 +100,23 @@
     _input.setAttribute('type', 'checkbox')
     _input.setAttribute('name', 'polygon')
     _input.setAttribute('id', `polygon${_index}`)
+    _input.setAttribute('checked', true)
     _input.classList.add('polygon-checkbox')
+
+    // 点击事件 显示polygon，设置codemirror值
+    _label.addEventListener('click', () => {
+      // console.log(overlays[_index - 1])
+      // overlays[_index - 1].show()
+      const overlay = overlays[_index - 1]
+      // 点击时，checked已经改变
+      if (overlay["Na"] && !_input.checked) {
+        overlay.hide()
+      } else if (!overlay["Na"] && _input.checked) {
+        overlay.show()
+      }
+    })
+
+    // 
     _label.appendChild(_input)
     _label.appendChild(_text)
     _div.appendChild(_label)
@@ -118,7 +134,10 @@
     jsonBtn = document.querySelector('.json-btn')
 
   clearBtn.addEventListener('click', () => {
-    map.clearOverlays()
+    // map.clearOverlays()
+    overlays.forEach(item => {
+      item.hide()
+    })
   })
   jsonBtn.addEventListener('click', () => {
     console.log(overlays)
